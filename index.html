@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Meta tags for Fashion Portfolio -->
+    <title>Nitheesh S P — Haute Fashion Technology & Concept Design Portfolio</title>
+    <meta name="description" content="Portfolio of Nitheesh S P — Fashion Technology student and concept designer specializing in streetwear, biological adaptations, and contemporary apparel development." />
+    <meta name="keywords" content="Nitheesh S P, Fashion Technology, Fashion Designer, Streetwear, Camo Leaf, Chroma Nature, Wild Instinct, Strie, Linear Elegance, Mood Boards, Tech Flats" />
+    <meta name="author" content="Nitheesh S P" />
+
+    <!-- Google Fonts: Cormorant Garamond, Italiana, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Italiana&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <!-- Theme initialization -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('atelier_theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-atelier-ivory text-atelier-charcoal dark:bg-atelier-obsidian dark:text-atelier-sand transition-colors duration-500 font-sans antialiased selection:bg-atelier-olive selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
