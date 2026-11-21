@@ -28,18 +28,18 @@ export default function CollectionDetailPage({ collectionId, onBack, onOpenLight
           </h2>
         </div>
 
-        {/* Continuous PPT Pages Only - Exactly the PPT, No Other Stuff */}
+        {/* Continuous PPT Pages - Fitting Completely With Zero Black Bars */}
         <div className="space-y-4 sm:space-y-6">
           {collection.boards.map((board, index) => (
             <div
               key={board.id || index}
-              className="rounded-xl overflow-hidden shadow-md bg-black border border-atelier-stone/20 dark:border-atelier-charcoal aspect-board cursor-pointer"
+              className="rounded-xl overflow-hidden shadow-md border border-atelier-stone/20 dark:border-atelier-charcoal cursor-pointer"
               onClick={() => onOpenLightbox(board)}
             >
               <img
                 src={board.image}
                 alt={`${collection.title} - Page ${index + 1}`}
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-auto block"
                 loading={index < 3 ? "eager" : "lazy"}
               />
             </div>

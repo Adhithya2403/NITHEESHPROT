@@ -24,7 +24,8 @@ dist-ssr/
 *.sln
 *.sw?
 
-# Raw Design Source Files & Extraction Scripts
+# Raw Source Files & Scripts
 *.pdf
 extracted_boards/
 *.py
+/images/

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X, ArrowLeft } from 'lucide-react';
-import { designerInfo, collections } from '../data/portfolioData';
+import { designerInfo } from '../data/portfolioData';
 
-export default function Navbar({ currentView, onGoHome, onSelectCollection }) {
+export default function Navbar({ currentView, onGoHome, onOpenArtGallery }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -32,21 +32,26 @@ export default function Navbar({ currentView, onGoHome, onSelectCollection }) {
     }
   };
 
-  const navLinks = [
-    { name: 'Collections', href: '#collections' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  const isSubPage = currentView?.page === 'collection' || currentView?.page === 'art-gallery';
 
-  const handleLinkClick = (href) => {
+  const handleLinkClick = (action) => {
     setMobileMenuOpen(false);
-    if (currentView?.page === 'collection') {
+    if (action === 'art-gallery') {
+      onOpenArtGallery();
+    } else if (action === 'fashion') {
       onGoHome();
       setTimeout(() => {
-        const el = document.querySelector(href);
+        const el = document.querySelector('#collections');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 100);
+    } else {
+      if (isSubPage) {
+        onGoHome();
+        setTimeout(() => {
+          const el = document.querySelector(action);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
     }
   };
 
@@ -62,7 +67,7 @@ export default function Navbar({ currentView, onGoHome, onSelectCollection }) {
         
         {/* Brand */}
         <div className="flex items-center space-x-3">
-          {currentView?.page === 'collection' && (
+          {isSubPage && (
             <button
               onClick={onGoHome}
               className="p-1.5 rounded-lg border border-atelier-stone/30 text-atelier-charcoal dark:text-atelier-sand hover:border-atelier-olive transition-colors sm:hidden"
@@ -81,22 +86,67 @@ export default function Navbar({ currentView, onGoHome, onSelectCollection }) {
         </div>
 
         {/* Desktop Links */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => {
-                if (currentView?.page === 'collection') {
-                  e.preventDefault();
-                  handleLinkClick(link.href);
-                }
-              }}
-              className="text-xs uppercase tracking-wider text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive transition-colors py-1"
-            >
-              {link.name}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center space-x-7">
+          <button
+            onClick={() => handleLinkClick('fashion')}
+            className={`text-xs uppercase tracking-wider transition-colors py-1 ${
+              currentView?.page === 'home'
+                ? 'text-atelier-olive font-semibold'
+                : 'text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive'
+            }`}
+          >
+            Fashion
+          </button>
+
+          <button
+            onClick={() => handleLinkClick('art-gallery')}
+            className={`text-xs uppercase tracking-wider transition-colors py-1 ${
+              currentView?.page === 'art-gallery'
+                ? 'text-atelier-olive font-semibold'
+                : 'text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive'
+            }`}
+          >
+            Art Gallery
+          </button>
+
+          <a
+            href="#about"
+            onClick={(e) => {
+              if (isSubPage) {
+                e.preventDefault();
+                handleLinkClick('#about');
+              }
+            }}
+            className="text-xs uppercase tracking-wider text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive transition-colors py-1"
+          >
+            About
+          </a>
+
+          <a
+            href="#skills"
+            onClick={(e) => {
+              if (isSubPage) {
+                e.preventDefault();
+                handleLinkClick('#skills');
+              }
+            }}
+            className="text-xs uppercase tracking-wider text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive transition-colors py-1"
+          >
+            Skills
+          </a>
+
+          <a
+            href="#contact"
+            onClick={(e) => {
+              if (isSubPage) {
+                e.preventDefault();
+                handleLinkClick('#contact');
+              }
+            }}
+            className="text-xs uppercase tracking-wider text-atelier-charcoal/80 dark:text-atelier-sand/80 hover:text-atelier-olive transition-colors py-1"
+          >
+            Contact
+          </a>
         </nav>
 
         {/* Action Controls */}
@@ -125,16 +175,43 @@ export default function Navbar({ currentView, onGoHome, onSelectCollection }) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-atelier-ivory/98 dark:bg-atelier-obsidian/98 backdrop-blur-xl border-b border-atelier-stone/30 px-5 py-5 shadow-xl">
           <div className="flex flex-col space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => handleLinkClick(link.href)}
-                className="text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
-              >
-                {link.name}
-              </a>
-            ))}
+            <button
+              onClick={() => handleLinkClick('fashion')}
+              className="text-left text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
+            >
+              Fashion Collections
+            </button>
+
+            <button
+              onClick={() => handleLinkClick('art-gallery')}
+              className="text-left text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
+            >
+              Art Gallery
+            </button>
+
+            <a
+              href="#about"
+              onClick={() => handleLinkClick('#about')}
+              className="text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
+            >
+              About
+            </a>
+
+            <a
+              href="#skills"
+              onClick={() => handleLinkClick('#skills')}
+              className="text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
+            >
+              Skills
+            </a>
+
+            <a
+              href="#contact"
+              onClick={() => handleLinkClick('#contact')}
+              className="text-base font-serif text-atelier-charcoal dark:text-atelier-sand hover:text-atelier-olive py-1"
+            >
+              Contact
+            </a>
           </div>
         </div>
       )}

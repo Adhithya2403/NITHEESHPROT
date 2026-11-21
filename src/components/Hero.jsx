@@ -34,16 +34,16 @@ export default function Hero({ onOpenLightbox }) {
             </div>
           </div>
 
-          {/* Simple Cover Image */}
+          {/* Cover Image - Fits Completely With Zero Black Bars */}
           <div className="lg:col-span-6">
             <div
-              className="rounded-xl overflow-hidden shadow-md bg-black border border-atelier-stone/30 dark:border-atelier-charcoal aspect-board cursor-pointer"
+              className="rounded-xl overflow-hidden shadow-md border border-atelier-stone/30 dark:border-atelier-charcoal cursor-pointer"
               onClick={() => onOpenLightbox(coverArtwork)}
             >
               <img
                 src={coverArtwork.image}
                 alt="Fashion Design Portfolio - 2027"
-                className="w-full h-full object-contain bg-black"
+                className="w-full h-auto block"
                 loading="eager"
               />
             </div>
