@@ -39,7 +39,7 @@ export default function ContactSection() {
             </h2>
           </div>
           <span className="text-xs font-mono text-atelier-muted">
-            Tiruppur, India
+            
           </span>
         </div>
 
