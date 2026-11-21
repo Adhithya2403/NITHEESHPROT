@@ -20,7 +20,7 @@ export default function Hero({ onOpenLightbox }) {
             </h1>
 
             <p className="text-base sm:text-lg text-atelier-muted font-sans font-light">
-              Fashion Technology · 2027
+              Fashion Technology
             </p>
 
             <div className="pt-2">
