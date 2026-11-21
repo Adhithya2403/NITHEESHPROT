@@ -4,11 +4,11 @@ import { designerInfo, educationList, industryExperience, awardsAndSymposiums, s
 
 export default function AboutMe() {
   return (
-    <section id="about" className="py-20 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="about" className="py-14 sm:py-20 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Curatorial Header */}
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-8 sm:mb-12">
           <div className="flex items-center space-x-2 text-xs uppercase tracking-haute text-atelier-olive dark:text-atelier-sand font-medium mb-2">
             <Sparkles className="w-4 h-4" />
             <span>Designer Profile & Credentials</span>
@@ -22,10 +22,10 @@ export default function AboutMe() {
         </div>
 
         {/* Profile Grid: Portrait + Statement */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
           
           {/* Portrait Column */}
-          <div className="lg:col-span-5 flex flex-col space-y-4">
+          <div className="lg:col-span-5 flex flex-col space-y-4 max-w-md mx-auto lg:max-w-none w-full">
             <div className="relative group rounded-2xl overflow-hidden shadow-xl border border-atelier-stone/40 dark:border-atelier-charcoal aspect-square bg-atelier-sand">
               <picture>
                 <source srcSet={designerInfo.portraitWebp} type="image/webp" />
@@ -44,7 +44,7 @@ export default function AboutMe() {
                   </span>
                   <span className="font-serif text-base">{designerInfo.name}</span>
                 </div>
-                <span className="text-xs px-2 py-0.5 rounded bg-atelier-olive text-white font-mono">
+                <span className="text-xs px-2 py-0.5 rounded bg-atelier-olive text-white font-mono font-medium">
                   CGPA {designerInfo.cgpa}
                 </span>
               </div>
@@ -54,7 +54,7 @@ export default function AboutMe() {
             <div className="p-4 rounded-xl bg-atelier-cream/50 dark:bg-atelier-charcoal/40 border border-atelier-stone/30 dark:border-atelier-charcoal/80 space-y-2 text-xs">
               <div className="flex items-center justify-between font-mono">
                 <span className="text-atelier-muted">Institution:</span>
-                <span className="text-atelier-charcoal dark:text-atelier-sand font-medium">{designerInfo.college}</span>
+                <span className="text-atelier-charcoal dark:text-atelier-sand font-medium truncate ml-2 text-right">{designerInfo.college}</span>
               </div>
               <div className="flex items-center justify-between font-mono">
                 <span className="text-atelier-muted">Academic Score:</span>
@@ -71,9 +71,9 @@ export default function AboutMe() {
           <div className="lg:col-span-7 flex flex-col space-y-5 font-sans font-light text-atelier-charcoal/85 dark:text-atelier-sand/85 leading-relaxed text-sm sm:text-base">
             
             {/* Quote Box */}
-            <div className="p-5 sm:p-6 rounded-xl bg-white dark:bg-atelier-obsidian/60 border-l-4 border-atelier-olive dark:border-atelier-sand shadow-sm space-y-2">
+            <div className="p-4 sm:p-6 rounded-xl bg-white dark:bg-atelier-obsidian/60 border-l-4 border-atelier-olive dark:border-atelier-sand shadow-sm space-y-2">
               <Quote className="w-5 h-5 text-atelier-olive/40 dark:text-atelier-sand/40" />
-              <p className="font-serif italic text-lg sm:text-xl text-atelier-charcoal dark:text-atelier-ivory leading-snug">
+              <p className="font-serif italic text-base sm:text-xl text-atelier-charcoal dark:text-atelier-ivory leading-snug">
                 "{designerInfo.vision}"
               </p>
               <span className="text-[10px] uppercase tracking-luxury text-atelier-muted block font-sans font-medium">
@@ -114,10 +114,10 @@ export default function AboutMe() {
         </div>
 
         {/* Industry Internships & Inplant Training */}
-        <div className="mb-14 pt-8 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between">
+        <div className="mb-12 sm:mb-14 pt-8 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-1">
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5">
+              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5 font-mono">
                 <Briefcase className="w-3.5 h-3.5" />
                 <span>Industry Exposure</span>
               </span>
@@ -125,7 +125,7 @@ export default function AboutMe() {
                 Internships & Inplant Training
               </h3>
             </div>
-            <span className="text-xs text-atelier-muted font-mono mt-1 sm:mt-0">
+            <span className="text-xs text-atelier-muted font-mono">
               5 Documented Industrial Trainings
             </span>
           </div>
@@ -134,7 +134,7 @@ export default function AboutMe() {
             {industryExperience.map((exp, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-white/60 dark:bg-atelier-charcoal/30 border border-atelier-stone/30 dark:border-atelier-charcoal flex flex-col justify-between space-y-3 hover:border-atelier-olive transition-colors"
+                className="p-4 sm:p-5 rounded-xl bg-white/60 dark:bg-atelier-charcoal/30 border border-atelier-stone/30 dark:border-atelier-charcoal flex flex-col justify-between space-y-3 hover:border-atelier-olive transition-colors"
               >
                 <div>
                   <div className="flex justify-between items-center text-[10px] font-mono mb-1.5">
@@ -163,10 +163,10 @@ export default function AboutMe() {
         </div>
 
         {/* Awards & Symposiums */}
-        <div className="mb-14 pt-8 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between">
+        <div className="mb-12 sm:mb-14 pt-8 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-1">
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5">
+              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5 font-mono">
                 <Award className="w-3.5 h-3.5" />
                 <span>Symposium Achievements</span>
               </span>
@@ -174,16 +174,16 @@ export default function AboutMe() {
                 Awards & Accolades
               </h3>
             </div>
-            <span className="text-xs text-atelier-muted font-mono mt-1 sm:mt-0">
+            <span className="text-xs text-atelier-muted font-mono">
               State & National Technical Competitions
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {awardsAndSymposiums.map((award, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded-xl bg-atelier-cream/40 dark:bg-atelier-charcoal/30 border border-atelier-stone/30 dark:border-atelier-charcoal flex flex-col justify-between space-y-3"
+                className="p-4 sm:p-5 rounded-xl bg-atelier-cream/40 dark:bg-atelier-charcoal/30 border border-atelier-stone/30 dark:border-atelier-charcoal flex flex-col justify-between space-y-3"
               >
                 <div>
                   <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono uppercase bg-atelier-olive text-white mb-2 font-medium">
@@ -208,7 +208,7 @@ export default function AboutMe() {
           {/* Education Timeline */}
           <div>
             <div className="mb-4">
-              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5">
+              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5 font-mono">
                 <GraduationCap className="w-3.5 h-3.5" />
                 <span>Academic Record</span>
               </span>
@@ -221,7 +221,7 @@ export default function AboutMe() {
               {educationList.map((edu, idx) => (
                 <div key={idx} className="p-4 rounded-xl bg-white/50 dark:bg-atelier-charcoal/30 border border-atelier-stone/30 dark:border-atelier-charcoal">
                   <div className="flex justify-between items-center text-xs font-mono mb-1">
-                    <span className="text-atelier-olive dark:text-atelier-sand">{edu.period}</span>
+                    <span className="text-atelier-olive dark:text-atelier-sand font-medium">{edu.period}</span>
                     <span className="text-xs font-bold text-atelier-charcoal dark:text-atelier-sand">{edu.score}</span>
                   </div>
                   <h4 className="font-serif text-base text-atelier-charcoal dark:text-atelier-sand">
@@ -237,7 +237,7 @@ export default function AboutMe() {
           {/* Certifications & Workshops */}
           <div>
             <div className="mb-4">
-              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5">
+              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium flex items-center space-x-1.5 font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 <span>Accreditations</span>
               </span>

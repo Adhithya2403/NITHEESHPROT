@@ -8,8 +8,8 @@ export default function Footer({ onOpenCollection }) {
   };
 
   return (
-    <footer className="py-12 border-t border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-cream/40 dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 space-y-10">
+    <footer className="py-12 sm:py-16 border-t border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-cream/40 dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Top Footer Banner */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pb-8 border-b border-atelier-stone/20 dark:border-atelier-charcoal">
@@ -25,10 +25,10 @@ export default function Footer({ onOpenCollection }) {
             </p>
           </div>
 
-          <div className="flex flex-col items-start md:items-end space-y-2">
+          <div className="flex items-center space-x-3">
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-full border border-atelier-stone/40 dark:border-atelier-charcoal hover:border-atelier-olive dark:hover:border-atelier-sand text-atelier-charcoal dark:text-atelier-sand transition-all hover:-translate-y-0.5"
+              className="p-2.5 rounded-full border border-atelier-stone/40 dark:border-atelier-charcoal hover:border-atelier-olive dark:hover:border-atelier-sand text-atelier-charcoal dark:text-atelier-sand transition-all hover:-translate-y-0.5 active:scale-95"
               aria-label="Back to top"
               title="Return to top"
             >
@@ -41,9 +41,9 @@ export default function Footer({ onOpenCollection }) {
         </div>
 
         {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-xs font-sans">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-xs font-sans">
           <div className="space-y-2.5">
-            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block">
+            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block font-mono">
               Curated Collections
             </span>
             <ul className="space-y-1.5">
@@ -51,7 +51,7 @@ export default function Footer({ onOpenCollection }) {
                 <li key={col.id}>
                   <button
                     onClick={() => onOpenCollection(col.id)}
-                    className="text-atelier-muted hover:text-atelier-charcoal dark:hover:text-white transition-colors"
+                    className="text-atelier-muted hover:text-atelier-charcoal dark:hover:text-white transition-colors text-left"
                   >
                     {col.number}. {col.title} ({col.season})
                   </button>
@@ -61,7 +61,7 @@ export default function Footer({ onOpenCollection }) {
           </div>
 
           <div className="space-y-2.5">
-            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block">
+            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block font-mono">
               Navigation
             </span>
             <ul className="space-y-1.5 text-atelier-muted">
@@ -73,7 +73,7 @@ export default function Footer({ onOpenCollection }) {
           </div>
 
           <div className="space-y-2.5">
-            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block">
+            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block font-mono">
               Technical Formats
             </span>
             <ul className="space-y-1.5 text-atelier-muted font-mono text-[11px]">
@@ -86,11 +86,11 @@ export default function Footer({ onOpenCollection }) {
           </div>
 
           <div className="space-y-2.5">
-            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block">
+            <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block font-mono">
               Direct Contact
             </span>
             <ul className="space-y-1.5 text-atelier-muted font-mono text-[11px]">
-              <li><a href={`mailto:${designerInfo.contact.email}`} className="hover:text-atelier-charcoal dark:hover:text-white">{designerInfo.contact.email}</a></li>
+              <li><a href={`mailto:${designerInfo.contact.email}`} className="hover:text-atelier-charcoal dark:hover:text-white truncate block">{designerInfo.contact.email}</a></li>
               <li>B.Tech Fashion Technology</li>
               <li className="text-atelier-olive dark:text-atelier-sand">Class of 2027</li>
             </ul>
@@ -98,13 +98,9 @@ export default function Footer({ onOpenCollection }) {
         </div>
 
         {/* Bottom Rights */}
-        <div className="pt-6 border-t border-atelier-stone/20 dark:border-atelier-charcoal flex flex-col sm:flex-row items-center justify-between text-[11px] text-atelier-muted font-mono gap-3">
-          <div>
-            © 2024–2027 Nitheesh S P. All original fashion artwork & technical illustrations.
-          </div>
-          <div className="flex items-center space-x-2">
-            <span>React & Vite Portfolio</span>
-          </div>
+        <div className="pt-6 border-t border-atelier-stone/15 dark:border-atelier-charcoal/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-atelier-muted font-mono">
+          <span>© 2024–2027 Nitheesh S P. All original fashion artwork & technical illustrations.</span>
+          <span>React 19 & Tailwind CSS Portfolio</span>
         </div>
 
       </div>

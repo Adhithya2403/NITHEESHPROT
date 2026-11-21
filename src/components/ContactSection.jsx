@@ -26,13 +26,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="contact" className="py-14 sm:py-20 border-t border-atelier-stone/20 dark:border-atelier-charcoal/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Curatorial Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-atelier-stone/30 dark:border-atelier-charcoal">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-6 border-b border-atelier-stone/30 dark:border-atelier-charcoal">
           <div>
-            <div className="flex items-center space-x-2 text-xs uppercase tracking-haute text-atelier-olive dark:text-atelier-sand font-medium mb-2">
+            <div className="flex items-center space-x-2 text-xs uppercase tracking-haute text-atelier-olive dark:text-atelier-sand font-medium mb-2 font-mono">
               <Sparkles className="w-4 h-4" />
               <span>Contact & Inquiries</span>
             </div>
@@ -51,7 +51,7 @@ export default function ContactSection() {
           {/* Left Column: Direct Coordinates */}
           <div className="lg:col-span-5 space-y-5">
             <div className="space-y-2">
-              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block">
+              <span className="text-[10px] uppercase tracking-widest text-atelier-olive dark:text-atelier-sand font-medium block font-mono">
                 Direct Contact
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl text-atelier-charcoal dark:text-atelier-sand">
@@ -66,35 +66,35 @@ export default function ContactSection() {
               {/* Email Card */}
               <a
                 href={`mailto:${designerInfo.contact.email}`}
-                className="group flex items-center space-x-4 p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all"
+                className="group flex items-center space-x-3 sm:space-x-4 p-3.5 sm:p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all min-h-[56px]"
               >
-                <div className="p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand flex-shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <div className="flex-grow">
-                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block">Direct Email</span>
-                  <span className="font-mono text-sm text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors">
+                <div className="flex-grow min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block font-mono">Direct Email</span>
+                  <span className="font-mono text-xs sm:text-sm text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors truncate block">
                     {designerInfo.contact.email}
                   </span>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors flex-shrink-0" />
               </a>
 
               {/* Phone Card */}
               <a
                 href={`tel:${designerInfo.contact.phone.replace(/\s+/g, '')}`}
-                className="group flex items-center space-x-4 p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all"
+                className="group flex items-center space-x-3 sm:space-x-4 p-3.5 sm:p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all min-h-[56px]"
               >
-                <div className="p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand flex-shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
-                <div className="flex-grow">
-                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block">Direct Phone</span>
-                  <span className="font-mono text-sm text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors">
+                <div className="flex-grow min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block font-mono">Direct Phone</span>
+                  <span className="font-mono text-xs sm:text-sm text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors truncate block">
                     {designerInfo.contact.phone}
                   </span>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors flex-shrink-0" />
               </a>
 
               {/* LinkedIn Card */}
@@ -102,24 +102,24 @@ export default function ContactSection() {
                 href={designerInfo.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center space-x-4 p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all"
+                className="group flex items-center space-x-3 sm:space-x-4 p-3.5 sm:p-4 rounded-xl border border-atelier-stone/30 dark:border-atelier-charcoal hover:border-atelier-olive bg-white/50 dark:bg-atelier-charcoal/30 transition-all min-h-[56px]"
               >
-                <div className="p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand">
+                <div className="p-2 sm:p-2.5 rounded-lg bg-atelier-sand/50 dark:bg-atelier-obsidian text-atelier-olive dark:text-atelier-sand flex-shrink-0">
                   <Linkedin className="w-5 h-5" />
                 </div>
-                <div className="flex-grow">
-                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block">LinkedIn Network</span>
-                  <span className="font-mono text-xs text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors truncate block">
+                <div className="flex-grow min-w-0">
+                  <span className="text-[10px] uppercase tracking-wider text-atelier-muted block font-mono">LinkedIn Network</span>
+                  <span className="font-mono text-[11px] sm:text-xs text-atelier-charcoal dark:text-atelier-sand group-hover:text-atelier-olive transition-colors truncate block">
                     linkedin.com/in/nitheesh-s-p-0b81bb2a4
                   </span>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-atelier-muted group-hover:text-atelier-charcoal dark:group-hover:text-white transition-colors flex-shrink-0" />
               </a>
             </div>
           </div>
 
           {/* Right Column: Clean Contact Form */}
-          <div className="lg:col-span-7 bg-white/70 dark:bg-atelier-charcoal/40 p-6 sm:p-8 rounded-2xl border border-atelier-stone/30 dark:border-atelier-charcoal/80 shadow-md">
+          <div className="lg:col-span-7 bg-white/70 dark:bg-atelier-charcoal/40 p-5 sm:p-8 rounded-2xl border border-atelier-stone/30 dark:border-atelier-charcoal/80 shadow-md">
             {submitted ? (
               <div className="py-10 flex flex-col items-center justify-center text-center space-y-3 animate-fadeIn">
                 <div className="w-10 h-10 rounded-full bg-atelier-olive/20 text-atelier-olive dark:text-atelier-sand flex items-center justify-center">
@@ -145,7 +145,7 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div className="space-y-1">
-                    <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium">
+                    <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium font-mono">
                       Your Name *
                     </label>
                     <input
@@ -154,12 +154,12 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Design Recruiter / Studio"
-                      className="w-full px-3.5 py-2 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-xs focus:outline-none focus:border-atelier-olive transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-base sm:text-xs focus:outline-none focus:border-atelier-olive transition-colors"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium">
+                    <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium font-mono">
                       Email Address *
                     </label>
                     <input
@@ -168,19 +168,19 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. contact@domain.com"
-                      className="w-full px-3.5 py-2 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-xs focus:outline-none focus:border-atelier-olive transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-base sm:text-xs focus:outline-none focus:border-atelier-olive transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium">
+                  <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium font-mono">
                     Inquiry Topic
                   </label>
                   <select
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-xs focus:outline-none focus:border-atelier-olive transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-base sm:text-xs focus:outline-none focus:border-atelier-olive transition-colors"
                   >
                     <option value="Fashion Design & Placement Inquiry">Fashion Placement / Full-Time Hiring (2027)</option>
                     <option value="Design Internship Opportunity">Design Internship</option>
@@ -190,7 +190,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium">
+                  <label className="text-[11px] uppercase tracking-wider text-atelier-muted font-medium font-mono">
                     Message *
                   </label>
                   <textarea
@@ -199,13 +199,13 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Briefly describe your inquiry..."
-                    className="w-full px-3.5 py-2 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-xs focus:outline-none focus:border-atelier-olive transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-atelier-stone/30 dark:border-atelier-charcoal bg-atelier-ivory dark:bg-atelier-obsidian text-atelier-charcoal dark:text-atelier-sand text-base sm:text-xs focus:outline-none focus:border-atelier-olive transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full bg-atelier-charcoal text-white dark:bg-atelier-sand dark:text-atelier-charcoal text-xs uppercase tracking-luxury font-medium hover:bg-atelier-olive dark:hover:bg-white transition-all shadow-md flex items-center justify-center space-x-2"
+                  className="w-full py-3.5 rounded-full bg-atelier-charcoal text-white dark:bg-atelier-sand dark:text-atelier-charcoal text-xs uppercase tracking-luxury font-medium hover:bg-atelier-olive dark:hover:bg-white transition-all shadow-md flex items-center justify-center space-x-2 active:scale-98"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Message</span>

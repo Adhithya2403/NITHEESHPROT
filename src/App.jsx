@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import CollectionsGallery from './components/CollectionsGallery';
+import CollectionDetailPage from './components/CollectionDetailPage';
 import AboutMe from './components/AboutMe';
 import SkillsSection from './components/SkillsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import Lightbox from './components/Lightbox';
-import CollectionDetailModal from './components/CollectionDetailModal';
 import { collections } from './data/portfolioData';
 
 export default function App() {
+  const [currentView, setCurrentView] = useState({ page: 'home', collectionId: null });
   const [activeLightboxItem, setActiveLightboxItem] = useState(null);
-  const [activeCollectionId, setActiveCollectionId] = useState(null);
 
   // Flatten all boards for global previous / next navigation in lightbox
   const allBoards = collections.flatMap(col =>
@@ -25,7 +25,44 @@ export default function App() {
     }))
   );
 
-  // Handle Lightbox Next / Prev
+  // Parse URL hash on mount and on popstate/hashchange
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('collection/')) {
+        const colId = hash.replace('collection/', '');
+        const exists = collections.some(c => c.id === colId);
+        if (exists) {
+          setCurrentView({ page: 'collection', collectionId: colId });
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+      if (hash === '' || hash === 'collections' || hash === 'about' || hash === 'skills' || hash === 'contact') {
+        setCurrentView({ page: 'home', collectionId: null });
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  // Navigate to dedicated collection page
+  const handleSelectCollection = (id) => {
+    setCurrentView({ page: 'collection', collectionId: id });
+    window.location.hash = `collection/${id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Return to portfolio home
+  const handleGoHome = () => {
+    setCurrentView({ page: 'home', collectionId: null });
+    window.location.hash = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Lightbox Next / Prev
   const handleLightboxPrev = () => {
     if (!activeLightboxItem) return;
     const currentIndex = allBoards.findIndex(b => b.image === activeLightboxItem.image);
@@ -50,53 +87,58 @@ export default function App() {
       <div className="grain-overlay" />
 
       {/* Navigation Bar */}
-      <Navbar />
-
-      {/* Main Page Content */}
-      <main>
-        {/* 1. Hero Section */}
-        <Hero
-          onOpenCollection={(id) => setActiveCollectionId(id)}
-          onOpenLightbox={(item) => setActiveLightboxItem(item)}
-        />
-
-        {/* 2. Collections Gallery (5 Curated Series) */}
-        <CollectionsGallery
-          onOpenLightbox={(item) => setActiveLightboxItem(item)}
-          onOpenCollectionModal={(id) => setActiveCollectionId(id)}
-        />
-
-        {/* 3. About the Designer */}
-        <AboutMe />
-
-        {/* 4. Skills & Apparel Expertise */}
-        <SkillsSection />
-
-        {/* 5. Contact & Inquiries */}
-        <ContactSection />
-      </main>
-
-      {/* 6. Luxury Footer */}
-      <Footer
-        onOpenCollection={(id) => setActiveCollectionId(id)}
+      <Navbar
+        currentView={currentView}
+        onGoHome={handleGoHome}
+        onSelectCollection={handleSelectCollection}
       />
 
-      {/* Interactive Lightbox Modal */}
+      {/* Main Content Area */}
+      <main>
+        {currentView.page === 'home' ? (
+          <>
+            {/* 1. Hero Section (with Presentation Cover Artwork) */}
+            <Hero
+              onOpenLightbox={(item) => setActiveLightboxItem(item)}
+            />
+
+            {/* 2. Selected Collections (Editorial Cards Grid) */}
+            <CollectionsGallery
+              onSelectCollection={handleSelectCollection}
+            />
+
+            {/* 3. About the Designer Profile */}
+            <AboutMe />
+
+            {/* 4. Skills & CAD Expertise */}
+            <SkillsSection />
+
+            {/* 5. Contact Section */}
+            <ContactSection />
+          </>
+        ) : (
+          /* Dedicated Collection Detail Page */
+          <CollectionDetailPage
+            collectionId={currentView.collectionId}
+            onBack={handleGoHome}
+            onSelectCollection={handleSelectCollection}
+            onOpenLightbox={(item) => setActiveLightboxItem(item)}
+          />
+        )}
+      </main>
+
+      {/* Luxury Footer */}
+      <Footer
+        onOpenCollection={handleSelectCollection}
+      />
+
+      {/* Interactive Full-Resolution Master Lightbox */}
       {activeLightboxItem && (
         <Lightbox
           item={activeLightboxItem}
           onClose={() => setActiveLightboxItem(null)}
           onPrev={handleLightboxPrev}
           onNext={handleLightboxNext}
-        />
-      )}
-
-      {/* Collection Monograph Modal */}
-      {activeCollectionId && (
-        <CollectionDetailModal
-          collectionId={activeCollectionId}
-          onClose={() => setActiveCollectionId(null)}
-          onOpenLightbox={(item) => setActiveLightboxItem(item)}
         />
       )}
     </div>
